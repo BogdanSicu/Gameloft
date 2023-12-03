@@ -28,7 +28,7 @@ public class Campaign {
     private Long priority;
 
     //Matchers
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     private Matcher matcher;
 
     @Column(name = "start_date")

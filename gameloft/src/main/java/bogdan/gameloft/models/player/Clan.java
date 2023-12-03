@@ -1,5 +1,6 @@
 package bogdan.gameloft.models.player;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class Clan {
     @Column(name = "name")
     private String name;
 
+    @JsonIgnore
     @OneToMany(
             mappedBy = "clan",
             cascade = CascadeType.ALL,

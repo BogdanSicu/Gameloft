@@ -1,6 +1,7 @@
 package bogdan.gameloft.models;
 
 import bogdan.gameloft.models.player.Player;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +21,7 @@ public class Country {
     @Id
     private String name;
 
+    @JsonIgnore
     @OneToMany(
             mappedBy = "country",
             cascade = CascadeType.ALL,

@@ -1,13 +1,14 @@
 package bogdan.gameloft.models.player;
 
+import bogdan.gameloft.models.player.manytomany.PlayerDeviceRelation;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "DEVICE")
 public class Device {
@@ -25,4 +26,7 @@ public class Device {
 
     @Column(name = "firmware")
     private String firmware;
+
+    @OneToMany(mappedBy = "device")
+    private Set<PlayerDeviceRelation> devices = new HashSet<>();
 }

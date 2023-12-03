@@ -8,9 +8,11 @@ import bogdan.gameloft.models.player.Player;
 import bogdan.gameloft.models.player.manytomany.compositekeys.PlayerItemKey;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
 @Table(name = "MATCHER_HAS_COUNTRY")
+@Data
 public class MatcherHasCountry {
 
     @JsonIgnore
