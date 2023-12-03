@@ -2,6 +2,7 @@ package bogdan.gameloft.models.player;
 
 import bogdan.gameloft.models.Country;
 import bogdan.gameloft.models.Language;
+import bogdan.gameloft.models.campaignplayer.PlayerCampaignRelation;
 import bogdan.gameloft.models.player.manytomany.PlayerDeviceRelation;
 import bogdan.gameloft.models.player.manytomany.PlayerItemRelation;
 import jakarta.persistence.*;
@@ -52,7 +53,8 @@ public class Player {
     private Date lastPurchase;
 
 //     active_campaigns
-
+    @OneToMany(mappedBy = "player")
+    private Set<PlayerCampaignRelation> active_campaigns = new HashSet<>();
 
 //     devices
     @OneToMany(mappedBy = "player")

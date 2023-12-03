@@ -1,20 +1,20 @@
 package bogdan.gameloft.models.campaign;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import bogdan.gameloft.models.campaignplayer.PlayerCampaignRelation;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "CAMPAIGN")
+@Table(name = "campaign")
 public class Campaign {
 
     @Column(name = "game")
@@ -28,6 +28,8 @@ public class Campaign {
     private Long priority;
 
     //Matchers
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Matcher matcher;
 
     @Column(name = "start_date")
     private Date startDate;
@@ -40,4 +42,8 @@ public class Campaign {
 
     @Column(name = "last_updated")
     private Date lastUpdated;
+
+    //player
+    @OneToMany(mappedBy = "campaign")
+    private Set<PlayerCampaignRelation> players = new HashSet<>();
 }

@@ -24,7 +24,7 @@ public class PlayerItemRelation {
 
     @ManyToOne
     @MapsId("item_id")
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "item_id")
     private Item item;
 
     @Column(name = "quantity")

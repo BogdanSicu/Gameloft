@@ -1,20 +1,25 @@
-package bogdan.gameloft.models.player.manytomany;
+package bogdan.gameloft.models.campaignplayer;
 
+import bogdan.gameloft.models.campaign.Campaign;
 import bogdan.gameloft.models.player.Device;
 import bogdan.gameloft.models.player.Player;
 import bogdan.gameloft.models.player.manytomany.compositekeys.PlayerDeviceKey;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "PLAYER_DEVICES")
 @Data
-public class PlayerDeviceRelation {
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "PLAYER_ACTIVE_CAMPAIGN")
+public class PlayerCampaignRelation {
 
     @JsonIgnore
     @EmbeddedId
-    PlayerDeviceKey id;
+    PlayerCampaignKey id;
 
     @JsonIgnore
     @ManyToOne
@@ -23,8 +28,8 @@ public class PlayerDeviceRelation {
     private Player player;
 
     @ManyToOne
-    @MapsId("device_id")
-    @JoinColumn(name = "device_id")
-    private Device device;
+    @MapsId("campaign_id")
+    @JoinColumn(name = "campaign_id")
+    private Campaign campaign;
 
 }
